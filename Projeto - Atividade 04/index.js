@@ -6,7 +6,8 @@ const Bowser = require("./bowser");
 const Goomba = require("./Personagens/goomba");
 const PrincesaPeach = require("./Personagens/princesa_Peach");
 const Luigi = require("./luigi");
-const fase02 = require("./fase02");
+const fase02 = require("./Fases/fase02");
+const fase03 = require("./Fases/fase03");
 
 var personagem = null;
 
@@ -85,8 +86,8 @@ const resultadoFase1 = fase01(personagem);
 
 if (resultadoFase1) {
 
-  console.log(" ");
-  console.log("Você ganhou a sua primeira batalha, agora podemos seguir o nosso caminho!");
+  personagem.treinar();
+
   console.log(" ");
   console.log("Após mais um tempo andando, encontramos duas trilhas diferentes. Aparentemente teremos que escolher entre os dois caminhos.");
   console.log("O primeiro caminho é composto por uma estrada de pedra, bem iluminado, porém, estamos sentindo um cheiro estranho e muito forte!");
@@ -95,13 +96,49 @@ if (resultadoFase1) {
 
   const escolhaCaminho = +prompt("O que você me diz? Qual caminho você escolhe - (1/2)")
 
-  if (escolhaCaminho == 1) {
-    fase03(personagem)
-  } else if (escolhaCaminho == 2) {
-    fase02(personagem)
-  }
+  while(escolhaCaminho != 1 && escolhaCaminho != 2){
+    if (escolhaCaminho == 1) {
 
-  //fase02
+      const resultadoFase3 = fase03(personagem)
+
+      if (resultadoFase3) {
+
+        personagem.treinar();
+
+        console.log("Você realmente ficou muito forte!")
+        console.log("Agora que entramos nos castelo vamos procurar o Bowser e resgatar a princesa Peach!");
+      } else {
+        console.log("Game Over!");
+      }
+      
+    } else if (escolhaCaminho == 2) {
+      const resultadoFase2 = fase02(personagem)
+
+      if (resultadoFase2) {
+        
+        personagem.treinar();
+
+        console.log("Meus Parabéns! Você conseguiu vencer o Bullet Bill, um dos adversários mais fortes desse mundo!");
+
+        const resultadoFase3 = fase03(personagem)
+
+        if (resultadoFase3) {
+
+          personagem.treinar();
+
+          console.log("Você realmente ficou muito forte!")
+          console.log("Agora que entramos nos castelo vamos procurar o Bowser e resgatar a princesa Peach!");
+        } else {
+          console.log("Game Over!");
+        }
+
+      } else {
+        console.log("Game Over!");
+      }
+    } else {
+      console.log("Aparentemente você não está escolhendo nenhum dos dois caminhos!");
+    }
+  }
 } else {
   console.log("Game Over!");
 }

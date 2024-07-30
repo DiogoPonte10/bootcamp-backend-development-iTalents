@@ -1,20 +1,19 @@
-const BulletBill = require("./Personagens/bulletBill");
-
 const prompt = require("prompt-sync")();
+const Goomba = require("../Personagens/goomba");
 
 function lutar(){
-  const bulletBill = new BulletBill("Bullet Bill", 15, 15, 2);
+  const goomba = new Goomba("Goomba", 10, 6, 4);
 
-  while(personagem.vida > 1 && bulletBill.vida > 1) {  
-    bulletBill.defender(personagem.atacar())
-    personagem.defender(bulletBill.atacar())
+  while(personagem.vida > 1 && goomba.vida > 1) {  
+    goomba.defender(personagem.atacar())
+    personagem.defender(goomba.atacar())
     console.log(`A vida do ${personagem.nome} é ${personagem.vida}!`);
-    console.log(`A vida do Bullet Bill é ${bulletBill.vida}!`);
+    console.log(`A vida do Goomba é ${goomba.vida}!`);
     console.log(" ");
   }
 
   if (personagem.vida < 1) {
-    console.log("Bullet Bill Venceu!");
+    console.log("Goomba Venceu!");
     return false;
   } else {
     console.log("Você venceu!")
@@ -27,7 +26,7 @@ module.exports = (personagem) => {
   let luta = false;
 
   console.log(" ");
-  console.log("Parabéns! Parece que você ganhou mais um batalha. Continue assim e você terá um futuro prmissor!");
+  console.log("Opa! Estamos caminhando a um tempo e parece que estamos avistando um goomba! Parece que seremos obrigados a enfrentar o nosso primeiro desafio!");
   console.log(" ");
 
   lutar(personagem);
@@ -35,6 +34,9 @@ module.exports = (personagem) => {
 
   if (luta) {
     personagem.restaura();
+    console.log(" ");
+    console.log("Você ganhou a sua primeira batalha, agora podemos seguir o nosso caminho!");
+    
     console.log(`Parabéns ${personagem.nome}! Você ganhou a batalha!`)
     console.log(`Agora podemos prosseguir com a nossa busca pela princesa!`)
     return true;
