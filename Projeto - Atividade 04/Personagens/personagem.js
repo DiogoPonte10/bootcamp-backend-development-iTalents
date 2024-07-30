@@ -20,7 +20,23 @@ class Personagem {
     if (this.defesa < golpe) {
       this.vida -= golpe;      
     }
-  }  
+  }
+
+  treinar(){
+    this.forca += 2;
+    this.defesa ++;
+  }
+
+  //Metodo Fase Final
+
+  faseFinalEsquerda(){
+    this.treinar();
+    this.vida -= 5;
+  }
+
+  faseFinalDireitaa(){
+    this.vida += 10;
+  }
 }
 
 module.exports = Personagem;

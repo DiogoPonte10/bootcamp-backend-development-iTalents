@@ -8,6 +8,7 @@ const PrincesaPeach = require("./Personagens/princesa_Peach");
 const Luigi = require("./luigi");
 const fase02 = require("./Fases/fase02");
 const fase03 = require("./Fases/fase03");
+const faseFinal = require("./Fases/faseFinal");
 
 var personagem = null;
 
@@ -107,6 +108,55 @@ if (resultadoFase1) {
 
         console.log("Você realmente ficou muito forte!")
         console.log("Agora que entramos nos castelo vamos procurar o Bowser e resgatar a princesa Peach!");
+  
+        //Última escolha
+
+        console.log(" ");
+        console.log("Agora que entramos, teremos que subir até o topo do castelo!");
+        console.log(" ");
+        console.log("Noosa, achei que já enfrentariamos o Bowser, mas aparentemente teremos que fazer mais uma escolha!");
+        console.log(" ");
+        console.log("A nossa frente podemos seguir por duas escadas.");
+        console.log("A 1ª da esquerda leva para a torre Oeste, enquanto a 2ª da direito leva para a torre Leste.");
+        
+        const escolhaFinal = +prompt("O que você me diz? Qual caminho você escolhe - (1/2)")
+
+        while(escolhaFinal != 1 && escolhaFinal != 2){
+          if (escolhaFinal == 1) {
+            console.log("Parece que você escolheu o caminha da esquerda, espero que tenha sido uma boa escolha!");
+            console.log("Estou sentindo que você está ficando mais forte, mas pera... você também está perdendo vida!");
+            personagem.faseFinalEsquerda();
+            console.log("Parece que você escolheu o caminha da esquerda, espero que tenha sido uma boa escolha!");
+            
+          } else if (escolhaFinal == 2) {
+            console.log("Parece que você escolheu o caminha da direita, espero que tenha sido uma boa escolha!");
+            console.log("Estou sentindo algo diferente em você, pera... você também está ganhando mais vida!");
+            personagem.faseFinalDireita();
+            console.log("Que ótimo, espero que isso lhe ajude!");
+
+          } else {
+            console.log("Aparentemente você não está escolhendo nenhum dos dois caminhos!");
+          }
+        }
+
+        console.log("Agora vamos enfrentar o Bowser");
+
+        const resultadoFinal = faseFinal(personagem)
+
+        if (resultadoFinal) {
+            
+          console.log("MEUS PARABÉNSSSSSS!!!!! Você conseguiu... alguém finalmente derrotou o Bowser!!");
+          console.log("Fico super feliz por você que se mostrou um grande guerreiro e conseguiu resgatar a princesa Peach.");
+          console.log("Agradeço pelo comprometimento que você teve e lhe desejo sorte no futuro!");
+          console.log("Saiba que se quiser, pode recomeçar o jogo e enfrentar novamente essa batalha!");
+
+          console.log(" ");
+          console.log("Fim de jogo!");
+
+        } else {
+          console.log("Game Over!");
+        }
+
       } else {
         console.log("Game Over!");
       }
@@ -128,6 +178,23 @@ if (resultadoFase1) {
 
           console.log("Você realmente ficou muito forte!")
           console.log("Agora que entramos nos castelo vamos procurar o Bowser e resgatar a princesa Peach!");
+
+          const resultadoFinal = faseFinal(personagem)
+
+          if (resultadoFinal) {
+            
+            console.log("MEUS PARABÉNSSSSSS!!!!! Você conseguiu... alguém finalmente derrotou o Bowser!!");
+            console.log("Fico super feliz por você que se mostrou um grande guerreiro e conseguiu resgatar a princesa Peach.");
+            console.log("Agradeço pelo comprometimento que você teve e lhe desejo sorte no futuro!");
+            console.log("Saiba que se quiser, pode recomeçar o jogo e enfrentar novamente essa batalha!");
+
+            console.log(" ");
+            console.log("Fim de jogo!");
+
+          } else {
+            console.log("Game Over!");
+          }
+            
         } else {
           console.log("Game Over!");
         }

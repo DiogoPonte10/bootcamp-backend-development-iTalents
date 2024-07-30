@@ -22,7 +22,6 @@ class Mario extends Personagem {
     return this.defesa;
   }
 
-
   //Metodos de ação
 
   treinar(){
