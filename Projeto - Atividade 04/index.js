@@ -179,6 +179,24 @@ if (resultadoFase1) {
           console.log("Você realmente ficou muito forte!")
           console.log("Agora que entramos nos castelo vamos procurar o Bowser e resgatar a princesa Peach!");
 
+          while(escolhaFinal != 1 && escolhaFinal != 2){
+            if (escolhaFinal == 1) {
+              console.log("Parece que você escolheu o caminha da esquerda, espero que tenha sido uma boa escolha!");
+              console.log("Estou sentindo que você está ficando mais forte, mas pera... você também está perdendo vida!");
+              personagem.faseFinalEsquerda();
+              console.log("Parece que você escolheu o caminha da esquerda, espero que tenha sido uma boa escolha!");
+              
+            } else if (escolhaFinal == 2) {
+              console.log("Parece que você escolheu o caminha da direita, espero que tenha sido uma boa escolha!");
+              console.log("Estou sentindo algo diferente em você, pera... você também está ganhando mais vida!");
+              personagem.faseFinalDireita();
+              console.log("Que ótimo, espero que isso lhe ajude!");
+  
+            } else {
+              console.log("Aparentemente você não está escolhendo nenhum dos dois caminhos!");
+            }
+          }
+
           const resultadoFinal = faseFinal(personagem)
 
           if (resultadoFinal) {
